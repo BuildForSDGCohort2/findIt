@@ -1,0 +1,183 @@
+//user registration trash
+
+users.route('/register').post(
+
+
+
+    (req, res) => {
+        
+        const userData = {
+
+            username   : req.body.username,
+            email      : req.body.email,
+            age        : req.body.age,
+            password   : req.body.password,
+            
+        }
+
+        User.find({
+            where: {
+                email : req.body.email
+            }
+        }).exec()
+        .then(user => {
+            if(user){
+                 bcrypt.hash(req.body.password, 10, (err,hash)=>{
+                userData.password = hash
+              User.create({userData})
+                .then(user => {
+                    res.json({
+                        status : user.email + 'registered'
+                    })
+                })
+                .catch(err=>{
+                    res.send('error : '+err)
+                })
+            })
+        } else {
+            res.json({error : "User already exists" })
+        }
+        
+    })
+      .catch(err => {
+          res.send('error : '+ err)
+      })
+
+    }
+)
+
+//login
+const { email, password } = req.body;
+    try {
+      let user = await User.findOne({
+        email
+      });
+      if (!user)
+        return res.status(400).json({
+          message: "User Not Exist"
+        });
+
+      const isMatch = await bcrypt.compare(password, user.password);
+      if (!isMatch)
+        return res.status(400).json({
+          message: "Incorrect Password !"
+        });
+
+      const payload = {
+        user: {
+          id: user.id
+        }
+      };
+
+      jwt.sign(
+        payload,
+        "randomString",
+        {
+          expiresIn: 3600
+        },
+        (err, token) => {
+          if (err) throw err;
+          res.status(200).json({
+            token
+          });
+        }
+      );
+    } catch (e) {
+      console.error(e);
+      res.status(500).json({
+        message: "Server Error"
+      });
+    }
+  }
+
+
+  //login.trash
+
+  User.findOne({email: req.body.email,})
+    .then((user) => {
+      if (user) {
+        if (bcrypt.compareSync(req.body.password, user.password)) {
+          let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
+            expiresIn: 3600,
+          });
+          res.status(200).json(token);
+          res.send(token);
+        }
+      } 
+      else {
+        res.status(400).json({ error: "User does not exist" });
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(400).json({ error: err });
+    });
+});
+
+
+//bestLogin.js
+
+[
+    check("email", "Please enter a valid email").isEmail(),
+    check("password", "Please enter a valid password").isLength({
+      min: 8,
+    }),
+  ],
+    async (req, res) => {
+      const errors = validationResult(req);
+
+      if (!errors.isEmpty()) {
+        return res.status(422).json({
+          errors: errors.array(),
+        });
+      }
+      
+      const { email, password } = req.body;
+      try {
+        let user = await User.findOne({
+          email,
+        });
+        if (!user)
+          return res.status(400).json({
+            message: "User Does Not Exist",
+          });
+
+        const isMatch = await bcrypt.compareSync(password, userData.password);
+        if (!isMatch)
+          return res.status(400).json({
+            message: "Incorrect Password !",
+          });
+
+        const payload = {
+          user: {
+            id: user.id,
+          },
+        };
+
+        jwt.sign(
+          payload,
+          process.env.SECRET_KEY,
+          { expiresIn: 9000, },
+          (err, token) => {
+            if (err) throw err;
+            res.status(200).json({ token });
+            
+          }
+        );
+      } catch (e) {
+        console.error(e);
+        res.status(500).json({
+          message: "Server Error",
+        });
+      }
+    };
+
+  }
+);
+
+
+//My payload
+
+https://jwt.io/#debugger-io?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWY2NjE0MjQ3YTMxMDYwYmE3MjA2MWM1In0sImlhdCI6MTYwMTI5ODY5NSwiZXhwIjoxNjAxMzA3Njk1fQ.is-chPO1CFb3lAaNXyONvy1y7-_X7wOdjm3qxMZ66ho
+
+https://jwt.io/#debugger-io?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWY2NjE0MjQ3YTMxMDYwYmE3MjA2MWM1In0sImlhdCI6MTYwMTI5OTExOCwiZXhwIjoxNjAyMTk5MTE4fQ.nLs9h5IiPc0yqrvG7igGT3Bu7lXUwS8NH9aiwY8bXZw
