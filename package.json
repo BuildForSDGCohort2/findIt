@@ -1,0 +1,24 @@
+{
+  "name": "findit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BuildForSDGCohort2/findIt.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BuildForSDGCohort2/findIt/issues"
+  },
+  "homepage": "https://github.com/BuildForSDGCohort2/findIt#readme",
+  "engines": {
+        "node": "14.13.1"
+    }
+}
