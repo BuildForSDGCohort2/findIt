@@ -1,24 +1,45 @@
 {
-  "name": "findit",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "myapp",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.20.0",
+    "cra-template": "1.0.3",
+    "formik": "^2.1.5",
+    "jwt-decode": "^2.2.0",
+    "react": "^16.13.1",
+    "react-bootstrap-icons": "^1.0.0",
+    "react-dom": "^16.13.1",
+    "react-helmet": "^6.1.0",
+    "react-hook-form": "^6.7.0",
+    "react-router-dom": "^5.2.0",
+    "react-script": "^2.0.5",
+    "react-script-tag": "^1.1.2",
+    "react-scripts": "3.4.3",
+    "yup": "^0.29.3"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/server.js"
+    "start": "node server/server.js",
+    "heroku-postbuild": "cd client && npm install && npm run build",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/BuildForSDGCohort2/findIt.git"
+  "eslintConfig": {
+    "extends": "react-app"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/BuildForSDGCohort2/findIt/issues"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
-  "homepage": "https://github.com/BuildForSDGCohort2/findIt#readme",
-  "engines": {
-        "node": "14.13.1"
-    }
+  "proxy": "http://localhost:5000"
+  
 }

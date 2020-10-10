@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/static/css/main.46ffae83.chunk.css",
+    "main.js": "/static/js/main.2d40fda0.chunk.js",
+    "main.js.map": "/static/js/main.2d40fda0.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.7918a0be.js",
+    "runtime-main.js.map": "/static/js/runtime-main.7918a0be.js.map",
+    "static/js/2.edb33bba.chunk.js": "/static/js/2.edb33bba.chunk.js",
+    "static/js/2.edb33bba.chunk.js.map": "/static/js/2.edb33bba.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.e7dcb18bd0753eaba334645df73af89c.js": "/precache-manifest.e7dcb18bd0753eaba334645df73af89c.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.46ffae83.chunk.css.map": "/static/css/main.46ffae83.chunk.css.map",
+    "static/js/2.edb33bba.chunk.js.LICENSE.txt": "/static/js/2.edb33bba.chunk.js.LICENSE.txt",
+    "static/media/Logopit.png": "/static/media/Logopit.3ec835ce.png",
+    "static/media/android.jpg": "/static/media/android.e15721cb.jpg",
+    "static/media/city.jpg": "/static/media/city.b70873a0.jpg",
+    "static/media/clouds.jpg": "/static/media/clouds.0d3b1d3f.jpg",
+    "static/media/compass.jpg": "/static/media/compass.e9900a21.jpg",
+    "static/media/globe.jpg": "/static/media/globe.2e5a9776.jpg",
+    "static/media/App.css": "/static/media/hands-600497_1920.6e488a5f.jpg",
+    "static/media/instagram.png": "/static/media/instagram.4a8c2347.png",
+    "static/media/map.jpg": "/static/media/map.e963e494.jpg",
+    "static/media/mountains.jpg": "/static/media/mountains.0c66600c.jpg",
+    "static/media/rhino.jpg": "/static/media/rhino.6416e7ad.jpg",
+    "static/media/samsam.jpg": "/static/media/samsam.ab82972a.jpg",
+    "static/media/whatsapp.png": "/static/media/whatsapp.fc601ba5.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7918a0be.js",
+    "static/js/2.edb33bba.chunk.js",
+    "static/css/main.46ffae83.chunk.css",
+    "static/js/main.2d40fda0.chunk.js"
+  ]
+}
