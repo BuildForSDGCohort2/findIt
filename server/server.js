@@ -34,11 +34,23 @@ const userRouter  = require('./routes/users')
 
 //app.use('/signup', signupRouter)
 //app.use('/login', loginRouter)
-app.use('/users', userRouter)
+app.use('/users', userRouter);
+app.use((req, res, next) => {
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+}); 
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
+// Error Handler
+app.use((error, req, res, next) => {
+  const status = error.statusCode || 500
+  const message = error.message
+  const data = error.data // Passing original error data
+  res.status(status).json({ message: message, data: data })
+});
+
+//DB connection
 app.listen(port, ()=>{
     console.log(`Express server listening on port ${port}`)
 })
