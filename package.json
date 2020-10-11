@@ -8,7 +8,6 @@
     "start": "node server/server.js",
     "server": "nodemon server/server.js",
     "client": "npm start --prefix front-end",
-    "test": "\"echo \\\"Error: no test specified\\\" && exit 1\"",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "build":"webpack --config webpack.config.js",
     "watch": "webpack --watch",
@@ -35,5 +34,8 @@
   },
   "dependencies": {
     "build": "^0.1.4"
+  },
+  "engines":{ 
+    "node": "12.x" 
   }
 }
